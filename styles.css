@@ -1,0 +1,161 @@
+/* 1. VARIABLES CSS (PALETA DE COLORES Y MODO CLARO/OSCURO) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --border-color: #cccccc;
+  --subtle-border: #eeeeee;
+  --font-main: 'Poppins', Arial, sans-serif;
+}
+
+/* MODO OSCURO AUTOMÁTICO SEGÚN EL PREFERENCIA DEL SISTEMA O CLASE */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --border-color: #444444;
+    --subtle-border: #222222;
+  }
+}
+
+/* RESET BÁSICO Y TIPOGRAFÍA BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* CABECERA Y NAVEGACIÓN (FLEXBOX) */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+/* HERO SECTION / SUBTÍTULO */
+header section {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ESTRUCTURA PRINCIPAL (LAYOUT MÓVIL POR DEFECTO) */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+section {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+section h2 {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--subtle-border);
+  padding-bottom: 5px;
+}
+
+/* ARTÍCULOS Y LISTAS */
+article {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px dashed var(--border-color);
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* FORMULARIO DE CONTACTO */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+input, textarea, button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+button {
+  cursor: pointer;
+  align-self: flex-start;
+  font-weight: bold;
+}
+
+/* PIE DE PÁGINA */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* RESPONSIVIDAD (PANTALLAS GRANDES DE ESCRITORIO) */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Distribución de secciones en cuadrícula para escritorio */
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+
+  /* Sección de Testimonios abarca todo el ancho abajo */
+  main section:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 20px;
+  }
+
+  main section:last-child article {
+    flex: 1;
+  }
+}
